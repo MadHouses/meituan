@@ -12,8 +12,15 @@ const CONFIG = {
 function MEITUAN(appId, secret, config) {
     this.appId = appId;
     this.secret = secret;
-    this.config = Object.assign(CONFIG, config);
-    this.host = this.config.debug ? this.config.testHost : this.config.realHost;
+    this.configuration = Object.assign(CONFIG, config);
+}
+
+MEITUAN.prototype.config = function (config) {
+    this.configuration = Object.assign(this.configuration, config);
+}
+
+MEITUAN.prototype.getHost = function () {
+    return this.configuration.debug ? this.configuration.testHost : this.configuration.realHost;
 }
 
 MEITUAN.prototype.sign = function (url, params) {
@@ -34,7 +41,7 @@ MEITUAN.prototype.sign = function (url, params) {
 }
 
 MEITUAN.prototype.get = function (path, params) {
-    let url = this.host + path;
+    let url = this.getHost() + path;
     this.sign(url, params);
     return rp({
         uri: url,
@@ -44,7 +51,7 @@ MEITUAN.prototype.get = function (path, params) {
 }
 
 MEITUAN.prototype.post = function (path, params) {
-    let url = this.host + path;
+    let url = this.getHost() + path;
     this.sign(url, params);
     return rp({
         method: 'POST',

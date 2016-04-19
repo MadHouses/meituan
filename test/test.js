@@ -46,7 +46,7 @@ describe('MEITUAN', function() {
     });
     
     
-    describe('get resource from testHost', function () {
+    describe('get resource from testHost for initial config', function () {
         it('should get expected response', function () {
             let path = '/api/v1/order/confirm';
             nock(MEITUAN_TEST_HOST + path)
@@ -57,6 +57,24 @@ describe('MEITUAN', function() {
             let mt = new MEITUAN(YOUR_APP_ID, YOUR_APP_SECRET, {debug: true});
             let params = {
                 order_id: '123'
+            };
+            return mt.get(path, params).should.eventually.deep.equal({data: 'ok'});
+        });
+    });
+    
+    describe('get resource from testHost for dynamic config', function () {
+        it('should get expected response', function () {
+            let path = '/api/v1/order/cancel';
+            nock(MEITUAN_TEST_HOST + path)
+                .log(console.log)
+                .get('')
+                .query(true)
+                .reply(200, {data: 'ok'});
+            let mt = new MEITUAN(YOUR_APP_ID, YOUR_APP_SECRET);
+            mt.config({debug: true});
+            let params = {
+                order_id: '123',
+                reason: 'somereasons'
             };
             return mt.get(path, params).should.eventually.deep.equal({data: 'ok'});
         });
