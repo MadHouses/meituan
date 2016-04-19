@@ -1,6 +1,6 @@
 {
   "name": "meituan",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "api client for meituan waimai open platform",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,10 @@
     "waimai"
   ],
   "author": "MadHouses",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MadHouses/meituan"
+  },
   "license": "MIT",
   "dependencies": {
     "moment": "^2.12.0",
