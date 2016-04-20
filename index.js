@@ -4,8 +4,8 @@ var rp = require("request-promise");
 var crypto = require('crypto');
 
 const CONFIG = {
-    realHost: 'http://waimaiopen.meituan.com/api',
-    testHost: 'http://test.waimaiopen.meituan.com/api',
+    realHost: 'http://waimaiopen.meituan.com',
+    testHost: 'http://test.waimaiopen.meituan.com',
     debug: false
 };
 
@@ -45,7 +45,7 @@ MEITUAN.prototype.get = function (path, params) {
     this.sign(url, params);
     return rp({
         uri: url,
-        qa: params,
+        qs: params,
         json: true
     });
 }

@@ -7,8 +7,8 @@ var MEITUAN = require('../index');
 
 chai.use(chaiAsPromised);
 
-const MEITUAN_REAL_HOST = 'http://waimaiopen.meituan.com/api';
-const MEITUAN_TEST_HOST = 'http://test.waimaiopen.meituan.com/api';
+const MEITUAN_REAL_HOST = 'http://waimaiopen.meituan.com';
+const MEITUAN_TEST_HOST = 'http://test.waimaiopen.meituan.com';
 const YOUR_APP_ID = 'yourappid';
 const YOUR_APP_SECRET = 'yourappsecret';
 
