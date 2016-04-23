@@ -19,11 +19,15 @@ api client for meituan waimai open platform
         .then(body => console.log(body))
         .catch(err => console.log(err));
         
+## signature validate
+
+    mt.validateSign(yourUrl, params)    // return true or false
+    
 ## config
 
     new Meituan(your_app_id, your_app_secret, [config]);
     
-or you can 
+    // or you can 
     
     mt.config(config);
     
